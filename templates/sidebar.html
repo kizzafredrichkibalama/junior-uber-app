@@ -1,0 +1,133 @@
+<div id="" class="side-bar mCustomScrollbar">
+	<div id="waitting-state" class="sidebar-state active">
+		<h2 class="driver-info">Welcome!</h4>
+		<div class="divider"></div>
+		<div class="loader">
+		  <span class="inner1"></span>
+		  <span class="inner2"></span>
+		  <span class="inner3"></span>
+		</div>
+		<p class="lght">Searching for available driver..</p>
+	</div>
+
+	<div id="driver-found" class="sidebar-state">
+		<h1 id="driver-found-title">A driver is on the way!</h1>
+		<div class="divider"></div>
+		<h2 class="driver-info">Driver Information</h4>
+		<p>Name: <span class="driver-name">John Doe</span></p>
+		<p>Car Make: <span class="car-model">Yotota Camry</span></p>
+		<p>Car Color: <span class="car-model car-color">Silver</span></p>
+		<p>License Plate Number: <span class="car-model car-plates">F0TRMP5</span></p>
+		<div class="divider"></div>
+		<p class="time-title">Estimated Pickup Time:</p>
+		<p class="time">5:15pm</p>
+		<p>Fare for this Ride:</p>
+		<p class="cost">$12.00</p>
+		<div class="divider"></div>
+		<div id="rider-buttons" class="sidebar-state">
+				<!--<a href="" class="button">Call Driver</a>-->
+				<a id="cancel-btn" href="" class="button">Cancel Ride</a>
+		</div>
+	</div>
+
+	<div id="directions-ride" class="sidebar-state">
+	</div>
+
+	<div id="no-drivers" class="sidebar-state">
+		<h1>No drivers available!</h1>
+		<div class="divider"></div>
+		<h4 class="driver-info">There are currently no drivers available to fulfill your ride request. uberJR apologizes for the inconvenience. Please try requesting a ride again later.</h4>
+		<div class="divider"></div>
+		<a id="retry-ride-request" href="" class="button">Retry Request</a>
+		<a href="/logout" class="button">Log Out</a>
+	</div>
+
+	<div id="too-far" class="sidebar-state">
+		<h1>Ride out of Range!</h1>
+		<div class="divider"></div>
+		<h4 class="driver-info">The ride you requested is out of range. Unfortunately, destinations must be within 100 miles of the pickup location. Please retry your ride request.</h4>
+		<div class="divider"></div>
+		<a id="retry-too-far-request" href="" class="button">Retry Request</a>
+		<a href="/logout" class="button">Log Out</a>
+	</div>
+
+	<div id="cancel-conf" class="sidebar-state">
+		<h1>Cancel ride request?</h1>
+		<div class="divider"></div>
+		<h4 class="conf-msg">Are you sure you want to cancel your request? Your driver has committed to you and is enroute. You will be charged a $5.00 cancellation fee.</h4>
+		<div class="divider"></div>
+		<form id="conf-yes" action="/api/cancelRide" method="POST">
+			<input type="submit" value="Yes" id="cancel-ride" class="button cancel-ride" onclick="">
+			<a id="conf-no" href="" class="button flt-right">No</a>
+		</form>
+	</div>
+
+	<div id="ride-canceled" class="sidebar-state">
+		<h1>Your ride request has been canceled!</h1>
+		<div class="divider"></div>
+		<h4 class="canceled-msg">Because you canceled your ride request, a $5.00 cancellation fee will be charged.</h4>
+		<div class="divider"></div>
+	</div>
+
+		<div id="payment-title" class="sidebar-state">
+				<h1>Payment for Ride Fare</h1>
+				<div class="divider"></div>
+		</div>
+		<div id="payment-form" class="sidebar-state">
+				<p>Fare for this Ride:</p>
+				<p class="fare">$3.50</p>
+				<div class="divider"></div>
+				<form id="payFare">
+					<p id="card-error"></p>
+					<input id="ccNameField" type="text" name="ccname" placeholder="Name on Card" autocomplete="cc-name" required>
+					<input id="ccNumField" type="text" name="ccnum" placeholder="Card Number" maxlength="19" required>
+					<div id="card-icon"></div>
+					<input id="ccCVCField" type="text" name="cccvc" placeholder="CVC" maxlength="4" autocomplete="off" required>
+					<select data-placeholder="Month" id="ccMonthField" required>
+						<option value="">Mo</option>
+						<option value="01">01</option>
+						<option value="02">02</option>
+						<option value="03">03</option>
+						<option value="04">04</option>
+						<option value="05">05</option>
+						<option value="06">06</option>
+						<option value="07">07</option>
+						<option value="08">08</option>
+						<option value="09">09</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+					</select>
+					<select data-placeholder="Year" id="ccYearField" required>
+						<option value="">Year</option>
+						<option value="2017">2017</option>
+						<option value="2018">2018</option>
+						<option value="2019">2019</option>
+						<option value="2020">2020</option>
+						<option value="2021">2021</option>
+						<option value="2022">2022</option>
+						<option value="2023">2023</option>
+						<option value="2024">2024</option>
+						<option value="2025">2025</option>
+						<option value="2026">2026</option>
+						<option value="2027">2027</option>
+						<option value="2028">2028</option>
+						<option value="2029">2029</option>
+						<option value="2030">2030</option>
+						<option value="2032">2032</option>
+						<option value="2033">2033</option>
+						<option value="2034">2034</option>
+						<option value="2035">2035</option>
+						<option value="2036">2036</option>
+						<option value="2037">2037</option>
+					</select>
+					<input type="submit" value="Pay Fare" id="payRide" class="button">
+				</form>
+			</div>
+
+			<div id="thank-rider" class="sidebar-state wow fadeOut" data-wow-duration="1s" data-wow-delay="5s">
+				<h1>Thank You!</h1>
+				<div class="divider"></div>
+				<h4>Thank you for riding with Junior Uber grp2 ! We hope that you request another ride with uberJR again soon!</h4>
+			</div>
+</div>

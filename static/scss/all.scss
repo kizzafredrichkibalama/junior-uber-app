@@ -1,0 +1,354 @@
+// devices viewport width starts at:
+$widescreen: 1372px;
+$tablet: 960px;
+$mobile: 767px;
+$mobile-sm: 479px;
+
+@import "base/markup-variables";
+@import "base/markup-mixins";
+@import "base/base-reset";
+@import "base/animate";
+@import "base/google-map";
+@import "base/top-bar";
+@import "base/overlay";
+@import "base/side-bar";
+@import "base/buttons";
+@import "base/scrollbars";
+@import "base/toggle_switch";
+@import "base/tooltips";
+
+.clear {
+   clear: both;
+}
+
+body {
+   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#30c2d1+0,19225b+100 */
+   background: #30c2d1; /* Old browsers */
+   background: -moz-linear-gradient(-45deg, #30c2d1 0%, #19225b 100%); /* FF3.6-15 */
+   background: -webkit-linear-gradient(-45deg, #30c2d1 0%, #19225b 100%); /* Chrome10-25,Safari5.1-6 */
+   background: linear-gradient(135deg, #30c2d1 0%, #19225b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#30c2d1', endColorstr='#19225b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+   &.rider,
+   &.driver {
+      // background: #dde3e3;
+      background: #dde3e3;
+
+      @keyframes circles {
+         0% {
+            transform: scale3d(1, 1, 1);
+         }
+
+         25% {
+            transform: scale3d(1.05, 1.05, 1.05);
+         }
+
+         50% {
+            transform: scale3d(0, 0, 0);
+         }
+
+         75% {
+            transform: scale3d(1.05, 1.05, 1.05);
+         }
+
+         100% {
+            transform: scale3d(1, 1, 1);
+         }
+      }
+
+      .circle-main {
+         position: absolute;
+         top: 25vh;
+         left: 50%;
+         margin-left: -15vh;
+         width: 30vh;
+         height: 30vh;
+         border-radius: 50%;
+         display: flex;
+         justify-content: center;
+         text-align: center;
+         flex-direction: column;
+         background-color: #66ccff;
+         transform: scale3d(1, 1, 1);
+         animation-iteration-count: infinite;
+         animation-delay: .5s;
+         animation-name: circles;
+         animation-duration: 2.25s;
+         animation-iteration-count: infinite;
+         opacity: .2;
+      }
+
+      .circle-inner {
+         width: 20vh;
+         height: 20vh;
+         border-radius: 50%;
+         display: flex;
+         justify-content: center;
+         text-align: center;
+         margin-left: 5vh;
+         flex-direction: column;
+         background-color: #99ddff;
+         animation-delay: .25s;
+         transform: scale3d(1, 1, 1);
+         animation-name: circles;
+         animation-duration: 2.25s;
+         animation-iteration-count: infinite;
+      }
+
+      .circle-middle {
+         width: 10vh;
+         height: 10vh;
+         border-radius: 50%;
+         background-color: red;
+         display: flex;
+         justify-content: center;
+         text-align: center;
+         flex-direction: column;
+         background-color: green;
+         margin-left: 5vh;
+         background-color: #cceeff;
+         animation-duration: 2.25s;
+         transform: scale3d(1, 1, 1);
+         animation-name: circles;
+         animation-duration: 2.25s;
+         animation-iteration-count: infinite;
+      }
+   }
+}
+
+h2 {
+   font-size: 34px;
+   line-height: 1.4;
+   font-weight: 300;
+   margin: 0 0 30px;
+
+   @media screen and (max-width: $mobile) {
+      font-size: 26px;
+      margin: 0 0 20px;
+   }
+}
+
+@media screen and (max-width: $mobile) {
+   body {
+      font-size: 16px;
+   }
+}
+
+p {
+   margin: 0 0 20px;
+}
+
+img.logo {
+   max-width: 160px;
+   margin-bottom: 20px;
+}
+
+.container {
+   max-width: 1200px;
+   margin: 0 auto;
+   position: relative;
+
+   @extend %clearfix;
+}
+
+.centered {
+   text-align: center;
+}
+
+#wrapper {
+   overflow: hidden;
+   min-height: 100%;
+   display: none;
+
+   .map-bg {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 100vh;
+      background: url("../images/map-bg.png") center;
+      background-size: cover;
+      opacity: .08;
+
+      .rider & {
+         opacity: .06;
+         z-index: -1;
+      }
+   }
+}
+
+.register-wrapper {
+   max-width: 400px;
+   background: #fff;
+   padding: 40px 40px 20px;
+   margin: 40px auto;
+   border-radius: 3px;
+   text-align: center;
+
+   @media screen and (max-width: $mobile) {
+      margin: 40px 30px 20px 30px;
+   }
+
+   @media screen and (max-width: $mobile-sm) {
+      margin: 20px;
+      padding: 20px;
+   }
+
+   &.register-driver {
+      max-width: 800px;
+
+      @media screen and (max-width: 880px) {
+         margin: 40px 40px 20px 40px;
+      }
+
+      @media screen and (max-width: $mobile-sm) {
+         margin: 20px;
+         padding: 20px;
+      }
+
+      h2 {
+         margin: 0;
+      }
+
+      h3 {
+         margin: 0 0 8px 0;
+      }
+
+      .col {
+         float: left;
+         width: 48.5%;
+         margin: 0 0 0 1.5%;
+
+         &.left {
+            margin: 0 1.5% 0 0;
+            padding-top: 29px;
+         }
+
+         @media screen and (max-width: 580px) {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+         }
+      }
+
+      input[type="submit"] {
+         max-width: 300px;
+         margin-top: 10px;
+
+         @media screen and (max-width: $mobile-sm) {
+            width: 100%;
+         }
+      }
+   }
+
+   form {
+      h2, h3 {
+         text-align: left;
+      }
+
+      h3 {
+         font-size: 18px;
+      }
+
+      input {
+         width: 100%;
+         margin: 0 0 20px;
+         border-radius: 2px;
+         font-size: 16px;
+      }
+
+      input[type="text"] {}
+
+      input[type="submit"] {
+         border: none;
+         background: #10b8f9;
+         color: #fff;
+         padding: 8px;
+         border-radius: 3px;
+         text-transform: uppercase;
+         margin-bottom: 20px;
+         cursor: pointer;
+      }
+
+      label {
+         font-size: 18px;
+         text-align: left;
+         display: inline-block;
+         vertical-align: middle;
+         width: 100%;
+         margin-bottom: 20px;
+      }
+
+      input[type="checkbox"] {
+         width: auto;
+         vertical-align: bottom;
+         position: relative;
+         margin: 0 13px 7px 0;
+      }
+
+      select {
+         -webkit-appearance: none;
+         -moz-appearance: none;
+         appearance: none;
+         border-radius: 3px;
+         width: 100%;
+         margin-bottom: 20px;
+         font-size: 16px;
+         padding: 4px 8px;
+      }
+
+      p {
+         font-size: 14px;
+      }
+
+      &.align-left {
+         text-align: left;
+      }
+
+      a {
+         font-size: 14px;
+         font-weight: bold;
+      }
+   }
+}
+
+.sjsu-map {
+   width: 100%;
+   height: 80vh;
+   opacity: .6;
+}
+
+.pace {
+   -webkit-pointer-events: none;
+   pointer-events: none;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   user-select: none;
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   -webkit-transform: translate3d(0, -50px, 0);
+   -ms-transform: translate3d(0, -50px, 0);
+   transform: translate3d(0, -50px, 0);
+   -webkit-transition: -webkit-transform .5s ease-out;
+   -ms-transition: -webkit-transform .5s ease-out;
+   transition: transform .5s ease-out;
+}
+
+.pace.pace-active {
+   -webkit-transform: translate3d(0, 0, 0);
+   -ms-transform: translate3d(0, 0, 0);
+   transform: translate3d(0, 0, 0);
+}
+
+.pace .pace-progress {
+   display: block;
+   position: fixed;
+   z-index: 999;
+   top: 0;
+   right: 100%;
+   width: 100%;
+   height: 7px;
+   background: #04cbff;
+   pointer-events: none;
+}

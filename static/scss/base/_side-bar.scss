@@ -1,0 +1,274 @@
+.side-bar {
+   position: fixed;
+   top: 0;
+   left: -380px;
+   background: #fff;
+   width: 380px;
+   height: calc(100vh - 60px);
+   padding: 30px;
+   -webkit-transition: all 0.5s ease-in-out;
+   transition: all 0.5s ease-in-out;
+   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+   z-index: 9;
+   opacity: 0;
+
+   h4.conf-msg {
+      font-weight: 400;
+   }
+
+   .sidebar-header {
+      h4 {
+         font-size: 28px;
+         font-weight: 100;
+         margin: 0;
+         display: inline-block;
+      }
+   }
+
+   &.driver {
+      left: 0;
+      opacity: 1;
+      padding: 30px 30px 20px;
+
+      .driver-status {
+         float: right;
+         text-align: center;
+         margin-bottom: 20px;
+
+         p {
+            font-size: 14px;
+            margin-bottom: 4px;
+         }
+      }
+
+      #driverReady,
+      #driverInactive {
+         position: absolute;
+         top: -200px;
+      }
+   }
+
+   .driver-welcome {
+      margin-top: 30vh;
+      text-align: center;
+
+      h4 {
+         margin-top: 30%;
+         font-size: 32px;
+         font-weight: 100;
+         margin: 0;
+         display: inline-block;
+      }
+   }
+
+   .sidebar-state {
+      display: none;
+
+      &.active {
+         display: block;
+      }
+   }
+
+   .loader {
+      margin-top: 30vh;
+   }
+
+   p.lght {
+      font-weight: 400;
+      text-align: center;
+      color: #b1b0b0;
+   }
+
+   .side-bar-active & {
+      left: 0;
+      opacity: 1;
+   }
+
+   .divider {
+      height: 1px;
+      width: 100%;
+      background: #ccc;
+      margin: 20px 0;
+      clear: both;
+   }
+
+   h1 {
+      font-size: 26px;
+      font-weight: 600;
+      color: #2781a1;
+      line-height: 1.2;
+      text-transform: capitalize;
+      margin-bottom: 10px;
+   }
+
+   h2 {
+      font-size: 28px;
+      line-height: 1;
+
+      &.driver-info,
+      &.rider-info {
+         margin-bottom: 14px;
+      }
+   }
+
+   p {
+      font-size: 16px;
+      margin-bottom: 6px;
+      font-weight: 600;
+
+      span {
+         font-weight: 400;
+         color: #444;
+         float: right;
+      }
+
+      &.time,
+      &.cost {
+         font-size: 40px;
+         font-weight: 100;
+      }
+   }
+
+   a.button {
+      &.cancel-ride {
+         float: right;
+      }
+   }
+}
+
+$size: 1em;
+$duration: 0.75s;
+$border-radius: $size;
+$bg-color: lightgray;
+
+.loader {
+   display: block;
+   width: 60px;
+   margin: 10% auto;
+}
+
+@-webkit-keyframes rotate {
+   0% {
+      -webkit-transform: translateY(0%);
+   }
+
+   30% {
+      -webkit-transform: translateY(-$size / 4);
+   }
+
+   50% {
+      -webkit-transform: translateY(0%);
+   }
+
+   70% {
+      -webkit-transform: translateY($size / 4);
+   }
+}
+
+.loader {
+   display: block;
+
+   .inner1, .inner2, .inner3 {
+      display: inline-block;
+      margin: $size * 0.125;
+      width: $size / 2;
+      height: $size / 2;
+      border: 1px solid $bg-color;
+      border-radius: $border-radius;
+      background-color: $bg-color;
+      -webkit-transform-origin: 50%;
+      -webkit-animation-duration: $duration;
+      -webkit-animation-name: rotate;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-timing-function: linear;
+   }
+
+   .inner2 {
+      -webkit-animation-delay: $duration * 0.25;
+   }
+
+   .inner3 {
+      -webkit-animation-delay: $duration * 0.5;
+   }
+}
+
+#ride-completed {
+   p.fare {
+      font-weight: 100;
+      font-size: 34px;
+   }
+}
+
+form#payFare {
+   input[type="text"] {
+      width: 100%;
+      margin-bottom: 10px;
+
+      //padding: 1px 7px;
+      border-radius: 3px;
+
+      &#ccNumField {
+         width: calc(100% - 67px);
+      }
+
+      &#ccCVCField {
+         max-width: 30%;
+      }
+   }
+
+   select {
+      width: 33%;
+      margin-bottom: 10px;
+   }
+
+   input[type="submit"] {
+      margin-top: 20px;
+   }
+
+   #card-icon {
+      width: 60px;
+      height: 32px;
+      background: red;
+      display: inline-block;
+      border: solid 1px #a7a7a7;
+      border-radius: 4px;
+      vertical-align: top;
+      background: url("../images/card-icons/default.png") center;
+      background-size: 112%;
+
+      &.visa {
+         background: url("../images/card-icons/visa.png") center;
+         background-size: 100%;
+      }
+
+      &.amex {
+         background: url("../images/card-icons/amex.png") center;
+         background-size: 100%;
+      }
+
+      &.discover {
+         background: url("../images/card-icons/discover.png") center;
+         background-size: 100%;
+      }
+
+      &.jcb {
+         background: url("../images/card-icons/jcb.png") center;
+         background-size: 100%;
+      }
+
+      &.mastercard {
+         background: url("../images/card-icons/mastercard.png") center;
+         background-size: 100%;
+      }
+
+      &.paypal {
+         background: url("../images/card-icons/paypal.png") center;
+         background-size: 100%;
+      }
+
+      &.prtgs {
+         background: url("../images/card-icons/prtgs.png") center;
+         background-size: 100%;
+      }
+   }
+}
